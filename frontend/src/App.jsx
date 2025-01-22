@@ -4,6 +4,7 @@ import { Toaster } from "react-hot-toast";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useAuthStore } from "./store/useAuthStore";
+import { useThemeStore } from "./store/useThemeStore";
 
 import HomePage from "./pages/HomePage";
 import Navbar from "./components/Navbar";
@@ -13,6 +14,7 @@ import ProfilePage from "./pages/ProfilePage";
 import SettingsPage from "./pages/SettingsPage";
 
 export default function App() {
+  const { theme } = useThemeStore();
   const { authUser, isLoadingCheckAuth, checkAuth } = useAuthStore();
 
   useEffect(() => {
@@ -30,7 +32,7 @@ export default function App() {
   }
 
   return (
-    <div>
+    <div data-theme={theme}>
       <Navbar />
 
       <Routes>
